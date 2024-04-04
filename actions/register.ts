@@ -38,7 +38,8 @@ export const register = async (values: RegisterFormType) => {
   const registerToken = await generateVerificationToken(email);
 
   if (!registerToken) {
-    return Response.redirect("/auth/login");
+    Response.redirect("/auth/login");
+    return;
   }
 
   await sendVerificationEmail(email, registerToken.token);

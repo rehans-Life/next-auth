@@ -33,8 +33,8 @@ export default function RegisterForm() {
     
     startTransition(() => {
       register(data).then((res) => {
-        setError(res.error);
-        setSuccess(res.success)
+        setError(res?.error);
+        setSuccess(res?.success)
       })
     })
   }
