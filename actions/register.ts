@@ -42,7 +42,12 @@ export const register = async (values: RegisterFormType) => {
     return;
   }
 
-  await sendVerificationEmail(email, registerToken.token);
+  try {
+    await sendVerificationEmail(email, registerToken.token);
+  } catch {
+    Response.redirect("/auth/login");
+    return;
+  }
 
   return { success: "Email Verification Sent!" };
 };
